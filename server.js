@@ -32,7 +32,7 @@ MongoClient.connect(
   })
   .catch((err) => {
     console.log("Error connecting to MongoDB:", err);
-    process.exit(1); 
+    process.exit(1);
   });
 
 app.get("/", (req, res, next) => {
