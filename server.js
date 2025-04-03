@@ -101,6 +101,7 @@ app.get('/collection/:collectionName', async (req, res, next) => {
             );
             res.json(result.modifiedCount === 1 ? { msg: 'success' } : { msg: 'error' });
         } catch (err) {
+            console.log("Put Error");
             next(err);
             }
         }
