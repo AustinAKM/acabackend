@@ -85,6 +85,7 @@ app.get('/collection/:collectionName', async (req, res, next) => {
         try {
             const result = await req.collection.insertOne(req.body);
             res.json(result.ops);
+            console.log("Post Success");
         } catch (err) {
             next(err);
             }
