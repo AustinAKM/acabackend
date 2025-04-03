@@ -87,6 +87,7 @@ app.get('/collection/:collectionName', async (req, res, next) => {
             res.json(result.ops);
             console.log("Post Success");
         } catch (err) {
+            console.log("Post Error");
             next(err);
             }
         }
