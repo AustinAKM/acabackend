@@ -19,9 +19,7 @@ app.use((req, res, next) => {
 const { MongoClient, ObjectId } = require("mongodb");
 
 let db;
-//MongoClient.connect('mongodb+srv://MyMongoDBUser:wednesday@cluster0.epqbr.mongodb.net', (err, client) => {
-//   db = client.db('webstore')
-//})
+
 MongoClient.connect(
   "mongodb+srv://austin_db:austindb123@cluster0.auvne.mongodb.net/"
 )
@@ -34,22 +32,18 @@ MongoClient.connect(
   })
   .catch((err) => {
     console.log("Error connecting to MongoDB:", err);
-    process.exit(1); // Exit process if DB connection fails
+    process.exit(1); 
   });
 
-// dispaly a message for root path to show that API is working
 app.get("/", (req, res, next) => {
   res.send("Select a collection, e.g., /collection/messages");
 });
 
-// get the collection name
 app.param("collectionName", (req, res, next, collectionName) => {
   req.collection = db.collection(collectionName);
-  // console.log('collection name:', req.collection)
   return next();
 });
 
-// retrieve all the objects from an collection
 app.get("/collection/:collectionName", async (req, res, next) => {
   try {
     const results = await req.collection.find({}).toArray();
@@ -61,8 +55,6 @@ app.get("/collection/:collectionName", async (req, res, next) => {
   }
 });
 
-// return with object id
-
 const ObjectID = require("mongodb").ObjectID;
 app.get("/collection/:collectionName/:id", (req, res, next) => {
   req.collection.findOne({ _id: new ObjectID(req.params.id) }, (e, result) => {
@@ -70,8 +62,6 @@ app.get("/collection/:collectionName/:id", (req, res, next) => {
     res.send(result);
   });
 });
-
-//update an object
 
 app.post("/collection/:collectionName", async (req, res, next) => {
   try {
