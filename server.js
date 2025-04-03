@@ -59,7 +59,7 @@ app.get('/collection/:collectionName', async (req, res, next) => {
         console.log("Get Success");
         res.json(results);
     } catch (err) {
-        console.log("Get Failed");
+        console.log("Get Error");
         next(err);
     }
     }
