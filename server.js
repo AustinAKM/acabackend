@@ -1,10 +1,7 @@
-// Import dependencies modules:
 const express = require("express");
-// const bodyParser = require('body-parser')
 
-// Create an Express.js instance:
 const app = express();
-// config Express.js
+
 app.use(express.json());
 app.set("port", 3000);
 app.use((req, res, next) => {
@@ -19,7 +16,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// connect to MongoDB
 const { MongoClient, ObjectId } = require("mongodb");
 
 let db;
