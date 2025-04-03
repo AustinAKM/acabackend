@@ -56,6 +56,7 @@ app.param('collectionName', (req, res, next, collectionName) => {
 app.get('/collection/:collectionName', async (req, res, next) => {
     try {
         const results = await req.collection.find({}).toArray();
+        console.log("Get Success");
         res.json(results);
     } catch (err) {
         next(err);
