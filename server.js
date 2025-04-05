@@ -96,6 +96,4 @@ app.delete("/collection/:collectionName/:id", (req, res, next) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("Express.js server running at localhost:3000");
-});
+
