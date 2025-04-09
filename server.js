@@ -77,7 +77,7 @@ app.post("/collection/:collectionName", async (req, res, next) => {
 app.put("/collection/:collectionName/:id", async (req, res, next) => {
   try {
     const result = await req.collection.updateOne(
-      { _id: new ObjectID(req.params.id) },
+      { _id: new ObjectId(req.params.id) },
       { $set: req.body }
     );
     res.json(
