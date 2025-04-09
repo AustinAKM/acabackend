@@ -35,6 +35,19 @@ MongoClient.connect(
     process.exit(1);
   });
 
+  app.use((req, res, next) => {
+    console.log(`Method: ${req.method}`);
+    console.log(`URL: ${req.url}`);
+    console.log(`Status: ${res.statusCode}`);
+    if (req.method === "POST" || req.method === "PUT") {
+      console.log(`Body: ${JSON.stringify(req.body, null, 2)}`);
+    }
+   
+    console.log("-------------------------");
+    next();
+  });
+   
+   
 app.get("/", (req, res, next) => {
   res.send("Select a collection, e.g., /collection/messages");
 });
